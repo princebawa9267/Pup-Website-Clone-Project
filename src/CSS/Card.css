@@ -1,0 +1,36 @@
+
+
+.contactCard {
+  transition: all 0.4s ease-in-out;
+  color: grey;
+  width: 22rem;
+  margin: 1rem auto;
+  position: relative;
+  transform-origin: center;
+}
+
+.contactCard:hover {
+  transform: scale(1.05);
+  z-index: 2;
+  box-shadow: 0 6px 12px rgba(150, 147, 147, 0.4);
+}
+
+/* Icon styling */
+.contact-icon {
+  background-color: grey;   /* grey background */
+  color: white;             /* icon color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;              /* circle size */
+  height: 60px;
+  border-radius: 50%;       /* makes it circular */
+  flex-shrink: 0;           /* stops shrinking */
+  transition: all 0.3s ease;
+}
+
+/* Hover effect */
+.contactCard:hover .contact-icon {
+  background-color: #444;   /* darker grey */
+  color: #f8f8f8;
+}

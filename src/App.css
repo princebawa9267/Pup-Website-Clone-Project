@@ -1,0 +1,43 @@
+/* Home Page gallery */
+.Gallery
+{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.Gallery .text
+{
+    text-align: center;
+    margin-top: 2rem;
+    font-family: cursive;
+    font-size: xxx-large;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+/* Contact card */
+/* .CardItem .title
+{
+    transition: all 0.5s ease-in;
+}
+
+.CardItem .title:hover{
+    font-size: large;
+}
+
+.CardItem .detail
+{
+    transition: all 0.5s ease-in;
+}
+.CardItem .detail:hover
+{
+    font-size: medium;
+} */
+
+/* Footer Section */
+.footer_section
+{
+    background-color: rgba(141, 145, 144, 0.628);
+    padding: 2%;
+    margin-top: 1%;
+}

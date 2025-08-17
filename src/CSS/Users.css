@@ -1,0 +1,4 @@
+.Users .table {
+    display: block; /* Using block allows better width control */
+    overflow-x: auto; /* Enables horizontal scrolling */
+}

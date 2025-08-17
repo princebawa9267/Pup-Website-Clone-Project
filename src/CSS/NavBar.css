@@ -1,0 +1,128 @@
+*
+{
+    padding: 0;
+    margin: 0;
+}
+.NavbarPupLogo
+{
+    height: 3rem;
+    align-items: start;
+    margin-top: 1rem;
+    margin-top: 0%;
+    margin: 0.5%;
+    margin-right: 0%;
+    transition: all .5s ease-in;
+}
+
+.NavbarPupLogo:hover{
+    height: 3.05rem;
+}
+
+.NavBar
+{
+    text-align: center;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgba(141, 145, 144, 0.628);
+    border-radius: 20px;
+    padding: 0.8rem;
+    margin: 1rem;
+    text-decoration: none;
+    box-shadow:0 6px 6px 6px rgb(150, 147, 147) ;
+    margin-bottom: 3rem;
+}
+.NavBar .NaacRedLogo
+{
+    height: 2rem;
+    margin-top: 1%;
+    transition: all .5s ease-in;
+}
+
+.NavBar .NaacRedLogo:hover
+{
+    height: 2.1rem;
+}
+
+.NavBar .Profile .button
+{
+    display: flex;
+    justify-content: center;
+}
+.NavBar .Profile .Link
+{
+    display: flex;
+    justify-content: center;
+    padding: 3%;
+}
+
+.NavBar .ImportantLinks .Link
+{
+    text-align: center;
+}
+
+.NavbarLink
+{
+    color: white;
+    font-weight: 900;
+    /* font-size: large; */
+    font-family: cursive;
+    text-decoration: none;
+    transition: all .3s linear;
+}
+
+.NavbarLink:hover
+{
+    background-color: white;
+    color:rgba(141, 145, 144, 0.628);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.NavBar #dropdown-basic-button
+{
+    color:white;
+    font-family: cursive;
+    font-weight: bold;
+    transition: all .3s linear;
+}
+
+.NavBar #dropdown-basic-button:hover
+{
+    background-color: white;
+    color:rgba(141, 145, 144, 0.628);
+    border-radius: 5px;
+    padding:10px;
+}
+
+.NavBar .threeLine
+{
+    display: flex;
+    justify-content: flex-end;
+    z-index: 999;
+}
+
+.NavBar .Box
+{
+    display: none;
+}
+
+@media (min-width: 840px) {
+    .NavBar .Box
+    {
+        display: block;
+    }
+    .NavBar .threeLine
+    {
+        display: none;
+    }
+}
+
+
+.NavBar .PupUlogo
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+}

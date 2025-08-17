@@ -1,0 +1,5 @@
+.StudentData .table
+{
+    display: block;
+    overflow: auto;
+}

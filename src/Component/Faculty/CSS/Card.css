@@ -1,0 +1,76 @@
+.CardContainer
+{
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    margin: auto;
+    padding: 2%;
+    width: 18rem;
+}
+.CardContainer .FacutlyImage
+{
+    width: 60%;
+    /* height: 120px; */
+    margin: auto;
+    margin-top: 2%;
+    border-radius: 30%;
+    transition: all 0.4s ease-in;
+}
+.CardContainer .FacutlyImage:hover
+{
+    width: 70%;
+    box-shadow:0 6px 6px 6px rgb(150, 147, 147,0.4) ;
+}
+.list-item
+{
+    display: flex;
+    flex-wrap: wrap;
+}
+.HODCard
+{
+    display: flex;
+    margin: auto;
+    margin-top: 2%;
+    margin-bottom: 3%;
+    justify-content: center;
+    text-align: center;
+}
+
+.HODCard .Card
+{
+    width: 20rem;
+    background-color: rgb(61, 61, 60);
+    border-radius: 10%;
+    color: white;
+}
+
+.HODCard .Name
+{
+    font-weight: bolder;
+    transition: all 0.5s ease-in-out;
+}
+.HODCard .Name:hover
+{
+    /* text-shadow: offset-x offset-y blur-radius color; */
+    /* text-shadow: 2px 2px 4px rgba(237, 0, 0, 0.5); */
+    font-size: large;
+}
+.HODCard .Designation
+{
+    font-weight: bold;
+}
+
+.HODCard .Image
+{
+    width: 80%;
+    margin: auto;
+    margin-top: 3%;
+    border-radius: 30%;
+    transition: all 0.5s ease-in;
+}
+
+.HODCard .Image:hover
+{
+    width: 85%;
+    box-shadow:0 6px 6px 6px rgba(214, 212, 212, 0.4) ;
+}
