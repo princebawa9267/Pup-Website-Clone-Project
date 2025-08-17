@@ -1,3 +1,7 @@
+.StudentData{
+    height: 60vh;
+}
+
 .StudentData .table
 {
     display: block;

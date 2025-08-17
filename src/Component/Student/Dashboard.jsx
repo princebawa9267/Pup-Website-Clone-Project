@@ -13,8 +13,8 @@ const Dashboard = () => {
     const Id = useSelector(state => state.User.UniqueId);
     const FirstName = useSelector(state => state.User.FirstName);
     const LastName = useSelector(state => state.User.LastName);
-    const [StudentMark, setStudentMark] = useState([]); 
-    const [dataAvailable,setDataAvailable] = useState(false);
+    const [StudentMark, setStudentMark] = useState([]);
+    const [dataAvailable, setDataAvailable] = useState(false);
     // let StudentMark = [];
     const [Loading, setLoading] = useState(true);
     console.log("Id", typeof (Id))
@@ -33,21 +33,19 @@ const Dashboard = () => {
             // console.log(typeof("My type",docSnap))
             // data = docSnap.data();
             const DATA = docSnap.data()
-            if(DATA == null)
-            {
+            if (DATA == null) {
                 setStudentMark(JSON.parse(localStorage.getItem("Marks")));
             }
-            else
-            {
+            else {
                 setStudentMark(DATA)
-                localStorage.setItem("Marks",JSON.stringify(docSnap.data()));
+                localStorage.setItem("Marks", JSON.stringify(docSnap.data()));
             }
-            setLoading(false);  
+            setLoading(false);
             setDataAvailable(true);
             // StudentMark.push(docSnap.data());
             // DATA = JSON.parse(JSON.parse(localStorage.getItem("Marks"))) || null;
-            
-            console.log("Hello")
+
+            // console.log("Hello")
             // localStorage.setItem("Marks",JSON.stringify(docSnap.data()) || localStorage.getItem("Marks"));
             // console.log(StudentMark);
             // const promise = new Promise((resolve,reject) => 
@@ -63,15 +61,14 @@ const Dashboard = () => {
             console.error("Error in fetching data");
             setLoading(false);
         }
-        finally
-        {
+        finally {
             console.log("Data is feeded")
         }
     }
     return (
         <div>
-            <div className='studentDetails' style={{ margin: "3%" }}>
-            <h4 style={{textAlign:"center",fontFamily:"cursive",fontWeight:"bold",margin:"1%"}}>{FirstName}{" "}{LastName}, your report</h4>
+            <div className='studentDetails' style={{ margin: "3%", minHeight: "80vh" }}>
+                <h4 style={{ textAlign: "center", fontFamily: "cursive", fontWeight: "bold", margin: "1%" }}>{FirstName}{" "}{LastName}, your report</h4>
                 <table className="table" style={{ textAlign: "center" }}>
                     <thead className="thead-dark">
                         <tr>
@@ -82,27 +79,43 @@ const Dashboard = () => {
                         </tr>
                     </thead>
                     {
-                        (Loading) ? <div style={{ marginTop: "100%" }}><HashLoader loading={Loading} size={150} style={{ textAlign: "center" }} /></div> : <tbody>{
+                        (Loading) ? <div
+                            style={{
+                                position: "fixed",   // stays on top of everything
+                                top: 0,
+                                left: 0,
+                                width: "100%",
+                                height: "100%",
+                                display: "flex",
+                                justifyContent: "center",
+                                alignItems: "center",
+                                backgroundColor: "rgba(255, 255, 255, 0.6)", // semi-transparent overlay
+                                backdropFilter: "blur(4px)", // blur effect
+                                zIndex: 9999, // makes sure it's above everything
+                            }}
+                        >
+                            <HashLoader loading={Loading} size={150} />
+                        </div> : <tbody>{
 
-                                Object.keys(StudentMark).map( 
-                                    key => {
-                                        return(
-                                            <tr key={key}>
-                                                <td>{++number}</td>
-                                                <td>{key}</td>
-                                                <td>{StudentMark[key]}</td>
-                                            </tr>
-                                        )
-                                    }
-                                )
-                            }
-                            
-                    </tbody>
+                            Object.keys(StudentMark).map(
+                                key => {
+                                    return (
+                                        <tr key={key}>
+                                            <td>{++number}</td>
+                                            <td>{key}</td>
+                                            <td>{StudentMark[key]}</td>
+                                        </tr>
+                                    )
+                                }
+                            )
+                        }
+
+                        </tbody>
                     }
                 </table>
-                    {
-                        (number == 0) ? <div style={{textAlign:"center", marginTop:"30px",fontSize:"medium",fontStyle:"italic",fontFamily:"cursive"}}>Yet, Marks of any subject is not given</div> : (number < 4) ? <div style={{textAlign:"center", marginTop:"30px",fontSize:"medium",fontStyle:"italic",fontFamily:"cursive"}}>Yet, marks of other subject is not given</div> : <span></span>
-                    }
+                {
+                    (number == 0) ? <div style={{ textAlign: "center", marginTop: "30px", fontSize: "medium", fontStyle: "italic", fontFamily: "cursive" }}>Yet, Marks of any subject is not given</div> : (number < 4) ? <div style={{ textAlign: "center", marginTop: "30px", fontSize: "medium", fontStyle: "italic", fontFamily: "cursive" }}>Yet, marks of other subject is not given</div> : <span></span>
+                }
             </div>
         </div>
     )

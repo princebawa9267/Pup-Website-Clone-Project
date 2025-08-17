@@ -51,26 +51,42 @@ const StudentDetail = () => {
         }
     }
     return (
-        <div className="StudentData">
+        <div className="StudentData" style={{ margin: "3%", marginTop: "1%" , minHeight: "80vh" }}>
             <span >
                 <h4 style={{ textAlign: "center", fontFamily: "cursive", fontWeight: "bold", margin: "1%", marginTop: "2%" }}>Student Marks of {Teacher}</h4>
             </span>
             {
-                (Loading) ? <div style={{ marginTop: "100%" }}><HashLoader loading={Loading} size={150} style={{ textAlign: "center" }} /></div> :
-                (studentDetail.length == 0) ? <div style={{textAlign:"center", marginTop:"30px",fontSize:"medium",fontStyle:"italic",fontFamily:"cursive"}}>Yet, student data is not available  </div> : <div className='studentDetails' style={{ margin: "3%", marginTop: "1%" }}>
-                    <table className="table" style={{textAlign: "center"}}>
-                        <thead className="thead-dark">
-                            <tr>
-                                <th scope="col" style={{ fontSize: "large" }}><u><b>Roll Number</b></u></th>
-                                <th scope="col" style={{ fontSize: "large" }}><u><b>Full Name</b></u></th>
-                                <th scope='col' style={{ fontSize: "large" }}><u><b>Email Address</b></u></th>
-                                <th scope='col' style={{ fontSize: "large" }}><u><b>Marks</b></u></th>
-                                <th scope='col' style={{ fontSize: "large" }}></th>
-                            </tr>
-                        </thead>
-                        <tbody><StudentTable student={studentDetail} /></tbody>
-                    </table>
-                </div>
+                (Loading) ? <div
+                    style={{
+                        position: "fixed",   // stays on top of everything
+                        top: 0,
+                        left: 0,
+                        width: "100%",
+                        height: "100%",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        backgroundColor: "rgba(255, 255, 255, 0.6)", // semi-transparent overlay
+                        backdropFilter: "blur(4px)", // blur effect
+                        zIndex: 9999, // makes sure it's above everything
+                    }}
+                >
+                    <HashLoader loading={Loading} size={150} />
+                </div> :
+                    (studentDetail.length == 0) ? <div style={{ textAlign: "center", marginTop: "30px", fontSize: "medium", fontStyle: "italic", fontFamily: "cursive" }}>Yet, student data is not available  </div> : <div className='studentDetails' style={{ margin: "3%", marginTop: "1%" }}>
+                        <table className="table" style={{ textAlign: "center" }}>
+                            <thead className="thead-dark">
+                                <tr>
+                                    <th scope="col" style={{ fontSize: "large" }}><u><b>Roll Number</b></u></th>
+                                    <th scope="col" style={{ fontSize: "large" }}><u><b>Full Name</b></u></th>
+                                    <th scope='col' style={{ fontSize: "large" }}><u><b>Email Address</b></u></th>
+                                    <th scope='col' style={{ fontSize: "large" }}><u><b>Marks</b></u></th>
+                                    <th scope='col' style={{ fontSize: "large" }}></th>
+                                </tr>
+                            </thead>
+                            <tbody><StudentTable student={studentDetail} /></tbody>
+                        </table>
+                    </div>
             }
         </div>
     )

@@ -10,6 +10,7 @@
     text-align: center;
     margin : 7rem;
     margin-top: 2rem;
+    min-height: 65vh;
     /* margin-bottom:9rem */
 }
 

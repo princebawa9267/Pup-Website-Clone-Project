@@ -329,7 +329,7 @@
 // export default Navbar;
 
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -348,21 +348,42 @@ const MyNavbar = () => {
   const LastName = useSelector(state => state.User.LastName);
   const FullName = FirstName + " " + LastName;
 
+  const [expanded, setExpanded] = useState(false);
+  const navRef = useRef();
+
   const Click = () => {
     navigate('/signin');
+    setExpanded(false);
   };
 
   const Logout = () => {
     navigate('/signin');
     dispatch(logOut());
     toast.info("You logout successfully");
+    setExpanded(false);
   };
 
+  // Close navbar when clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setExpanded(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   return (
-    <Navbar expand="md" className="NavBar px-3">
+    <Navbar 
+      expand="md" 
+      className="NavBar px-3" 
+      expanded={expanded} 
+      ref={navRef}
+    >
       <Container fluid>
         {/* Logo */}
-        <Navbar.Brand href="/">
+        <Navbar.Brand as={Link} to="/" onClick={() => setExpanded(false)}>
           <div style={{display:"flex", flexDirection:"row", alignItems:"center"}}>
             <img src={completeLogo} className="NavbarPupLogo" alt="PUP Logo"/>
             <img src={naac} className="NaacRedLogo ms-2" alt="Naac Logo"/>
@@ -370,18 +391,19 @@ const MyNavbar = () => {
         </Navbar.Brand>
 
         {/* Hamburger */}
-        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Toggle 
+          aria-controls="navbar-nav" 
+          onClick={() => setExpanded(expanded ? false : true)} 
+        />
 
         {/* Links */}
         <Navbar.Collapse id="navbar-nav" className="justify-content-end">
-          <Nav className="align-items-center gap-4"> 
-            {/* 👆 gap-4 gives equal spacing between items */}
+          <Nav className="align-items-center gap-4">
+            <Link to="/" className="NavbarLink nav-link" onClick={() => setExpanded(false)}>Home</Link>
+            <Link to="/faculty" className="NavbarLink nav-link" onClick={() => setExpanded(false)}>C.S.E Faculty</Link>
+            <Link to="/about" className="NavbarLink nav-link" onClick={() => setExpanded(false)}>About Us</Link>
 
-            <Link to="/" className="NavbarLink nav-link">Home</Link>
-            <Link to="/faculty" className="NavbarLink nav-link">C.S.E Faculty</Link>
-            <Link to="/about" className="NavbarLink nav-link">About Us</Link>
-
-            <NavDropdown title="Important Links" id="important-links" className="ImportantLinks nav-link">
+            <NavDropdown title="Important Links" id="important-links" className="ImportantLinks NavbarLink nav-link">
               <NavDropdown.Item href="https://ds19.pupexamination.ac.in/uploaddatesheet/view-datesheet.php" target="_blank">Datesheet</NavDropdown.Item>
               <NavDropdown.Item href="https://results.pupexamination.ac.in/t8/results/results.php" target="_blank">Result</NavDropdown.Item>
               <NavDropdown.Item href="https://punjabiuniversity.ac.in/indexSyllabi.aspx" target="_blank">Download Syllabus</NavDropdown.Item>
@@ -393,15 +415,15 @@ const MyNavbar = () => {
               <button type="submit" className="btn btn-success ms-2" onClick={Click}>Login</button>
             ) : (
               <>
-                {Role === 0 && <Link to="/users" className="NavbarLink nav-link">Users</Link>}
-                {Role === 2 && <Link to="/dashboard" className="NavbarLink nav-link">Dashboard</Link>}
-                {Role === 1 && <Link to="/student-detail" className="NavbarLink nav-link">Students Data</Link>}
+                {Role === 0 && <Link to="/users" className="NavbarLink nav-link" onClick={() => setExpanded(false)}>Users</Link>}
+                {Role === 2 && <Link to="/dashboard" className="NavbarLink nav-link" onClick={() => setExpanded(false)}>Dashboard</Link>}
+                {Role === 1 && <Link to="/student-detail" className="NavbarLink nav-link" onClick={() => setExpanded(false)}>Students Data</Link>}
 
                 <NavDropdown title={FullName} id="profile-dropdown" className="Profile ms-2">
-                  <NavDropdown.Item onClick={() => navigate('/profile')}>Profile</NavDropdown.Item>
-                  {Role === 2 && <NavDropdown.Item onClick={() => navigate('/dashboard')}>Dashboard</NavDropdown.Item>}
-                  {Role === 1 && <NavDropdown.Item onClick={() => navigate('/student-detail')}>Students Detail</NavDropdown.Item>}
-                  {Role === 0 && <NavDropdown.Item onClick={() => navigate('/signup')}>Create Account</NavDropdown.Item>}
+                  <NavDropdown.Item onClick={() => {navigate('/profile'); setExpanded(false);}}>Profile</NavDropdown.Item>
+                  {Role === 2 && <NavDropdown.Item onClick={() => {navigate('/dashboard'); setExpanded(false);}}>Dashboard</NavDropdown.Item>}
+                  {Role === 1 && <NavDropdown.Item onClick={() => {navigate('/student-detail'); setExpanded(false);}}>Students Detail</NavDropdown.Item>}
+                  {Role === 0 && <NavDropdown.Item onClick={() => {navigate('/signup'); setExpanded(false);}}>Create Account</NavDropdown.Item>}
                   <NavDropdown.Divider />
                   <NavDropdown.Item onClick={Logout} className="text-danger">Log out</NavDropdown.Item>
                 </NavDropdown>

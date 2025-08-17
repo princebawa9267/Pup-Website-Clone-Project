@@ -3,7 +3,9 @@
     padding: 0;
     margin: 0;
 }
-.NavbarPupLogo
+
+
+/* .NavbarPupLogo
 {
     height: 3rem;
     align-items: start;
@@ -12,11 +14,46 @@
     margin: 0.5%;
     margin-right: 0%;
     transition: all .5s ease-in;
+} */
+
+/* .NavbarPupLogo:hover{
+    height: 3.05rem;
+} */
+
+/* .NavBar .NaacRedLogo
+{
+    height: 2rem;
+    margin-top: 1%;
+    transition: all .5s ease-in;
 }
 
-.NavbarPupLogo:hover{
-    height: 3.05rem;
+.NavBar .NaacRedLogo:hover
+{
+    height: 2.1rem;
+} */
+
+
+.NavbarPupLogo {
+  height: 3rem; /* default size for desktop */
+  width: auto;
 }
+
+.NaacRedLogo {
+  height: 2rem;
+  width: auto;
+}
+
+/* 📱 For small screens */
+@media (max-width: 768px) {
+  .NavbarPupLogo {
+    height: 1.5rem; /* smaller size for mobile */
+  }
+
+  .NaacRedLogo {
+    height: 1rem;
+  }
+}
+
 
 .NavBar
 {
@@ -32,17 +69,7 @@
     box-shadow:0 6px 6px 6px rgb(150, 147, 147) ;
     margin-bottom: 3rem;
 }
-.NavBar .NaacRedLogo
-{
-    height: 2rem;
-    margin-top: 1%;
-    transition: all .5s ease-in;
-}
 
-.NavBar .NaacRedLogo:hover
-{
-    height: 2.1rem;
-}
 
 .NavBar .Profile .button
 {

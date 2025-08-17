@@ -96,7 +96,7 @@ const Profile = () => {
 
   return (
     <div>
-      <div className="card text-center" style={{marginLeft:"10%",marginRight:"10%",marginTop:"4%"}}>
+      <div className="card text-center" style={{marginLeft:"10%",marginRight:"10%",marginTop:"4%", minHeight:"80vh"}}>
         <div className="card-header" style={{fontSize:"larger", fontWeight:"bolder"}}>
           <u><b>Profile</b></u>
         </div>
