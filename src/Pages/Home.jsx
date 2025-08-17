@@ -8,9 +8,28 @@ import { PupBuilding } from "../Images/index"
 const Home = () => {
   return (
     <div>
-      <div className='HomePUPBuilding' style={{ display: "flex", alignContent: "center" }}>
-        <img src={PupBuilding} width={"90%"} style={{ marginLeft: "5%" }} />
-      </div>
+      <div
+  className="HomePUPBuilding"
+  style={{
+    width: "90%",
+    margin: "0 auto",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  }}
+>
+  <img
+    src={PupBuilding}
+    alt="PUP Building"
+    style={{
+      width: "100%",
+      height: "auto",
+      objectFit: "cover",
+    }}
+  />
+</div>
+
       <div className='Gallery'>
         <div className='text'>
           Gallery

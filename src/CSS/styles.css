@@ -1,8 +1,4 @@
-body {
-  position: relative;
-  height: 100%;
-}
-
+/* General body styles */
 body {
   background: #eee;
   font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -10,22 +6,63 @@ body {
   color: #000;
   margin: 0;
   padding: 0;
+  position: relative;
+  height: 100%;
 }
 
+/* Carousel container */
+.Carousel {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Swiper container */
 .Carousel .swiper {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 20px; /* reduce padding for smaller gap */
+  padding-bottom: 30px; /* reduce gap between image and pagination */
+  box-sizing: border-box;
 }
 
+/* Swiper slides */
 .Carousel .swiper-slide {
-  background-position: center;
-  background-size: cover;
-  width: 500px;
-  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto; /* let width be based on image size */
+  height: auto; /* height based on image */
 }
 
+/* Slide images */
 .Carousel .swiper-slide img {
   display: block;
-  width: 100%;
+  width: 400px; /* default large screen */
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+/* Pagination dots style */
+.swiper-pagination {
+  bottom: 10px !important; /* keep dots close to images */
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .Carousel .swiper-slide img {
+    width: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .Carousel .swiper-slide img {
+    width: 270px;
+  }
+}
+
+@media (max-width: 480px) {
+  .Carousel .swiper-slide img {
+    width: 200px;
+  }
 }

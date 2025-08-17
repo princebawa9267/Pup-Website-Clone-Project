@@ -1,5 +1,4 @@
 
-
 .contactCard {
   transition: all 0.4s ease-in-out;
   color: grey;
@@ -33,4 +32,23 @@
 .contactCard:hover .contact-icon {
   background-color: #444;   /* darker grey */
   color: #f8f8f8;
+}
+
+
+@media (max-width: 1200px) {
+  .contactCard {
+    width: 22rem; /* medium screens like tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .contactCard {
+    width: 18rem; /* smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .contactCard {
+    width: 20rem; /* mobile screens */
+  }
 }
